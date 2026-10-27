@@ -6,7 +6,7 @@
 backend:
   name: github
   # 个人主页站点仓库（与 hugo.yaml 的 baseURL 对应）
-  repo: yourname/yourname.github.io
+  repo: liujingfeng5164/liujingfeng5164.github.io
   # 若用项目站点，改成 yourname/blog
   branch: main
   # PAT 认证：不需要 base_url，也不需要 OAuth 代理
@@ -15,8 +15,8 @@ backend:
 media_folder: "static/images"
 public_folder: "/images"
 
-site_url: "https://yourname.github.io/"
-display_url: "https://yourname.github.io/"
+site_url: "https://liujingfeng5164.github.io/"
+display_url: "https://liujingfeng5164.github.io/"
 
 collections:
   # ---------- 文章（每篇一个 .md，不建 page bundle）----------

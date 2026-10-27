@@ -4,7 +4,7 @@
 # ===========================================================
 
 # 个人主页站点（仓库名 yourname.github.io）用这一行：
-baseURL: "https://yourname.github.io/"
+baseURL: "https://liujingfeng5164.github.io/"
 # 若用项目站点（仓库名任意，如 blog），改成：
 # baseURL: "https://yourname.github.io/blog/"
 
