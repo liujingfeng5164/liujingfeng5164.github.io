@@ -52,6 +52,13 @@ $hugo = "G:\blog\.tools\hugo\hugo.exe"
 打开 http://localhost:1313/ 预览，http://localhost:1313/admin/ 是本地后台入口
 （本地后台同样会真实提交到仓库，建议只在正式域名下写文章）。
 
+Windows 上也可以直接用仓库里的脚本（自动把 `.tools` 加入 PATH，找不到就回退到系统 hugo）：
+
+```bat
+dev.cmd      :: 预览（含草稿），http://localhost:1313/
+build.cmd    :: 生产构建，输出到 public\
+```
+
 ## 首次上线
 
 1. 在 GitHub 新建仓库 `你的用户名.github.io`。
