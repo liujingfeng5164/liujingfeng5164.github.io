@@ -1,0 +1,37 @@
+/* ===========================================================
+   Tailwind CSS v4 入口
+   - @source "hugo_stats.json"：只打包模板/内容里真实用到的 class
+     （该文件由 Hugo 生成，并已挂载到 assets/notwatching/）
+   =========================================================== */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+/* 韩式极简的字体栈：正文与标题共用一套克制的字体 */
+@theme {
+  --font-sans:
+    "Pretendard Variable", Pretendard, "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:
+    "Noto Serif SC", "Songti SC", "Source Han Serif SC", ui-serif, Georgia,
+    serif;
+
+  /* 站点色板（与模板里的 arbitrary value 保持一致） */
+  --color-paper: #faf9f7;
+  --color-ink: #3d4a5c;
+  --color-rose: #d4a5a5;
+  --color-sage: #a8c5b8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-rose);
+    color: var(--color-paper);
+  }
+}

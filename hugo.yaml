@@ -1,0 +1,72 @@
+# ===========================================================
+#  Hugo 站点配置 —— Hugo + Tailwind CSS v4 + Sveltia CMS
+#  必改项：yourname（你的 GitHub 用户名）
+# ===========================================================
+
+# 个人主页站点（仓库名 yourname.github.io）用这一行：
+baseURL: "https://yourname.github.io/"
+# 若用项目站点（仓库名任意，如 blog），改成：
+# baseURL: "https://yourname.github.io/blog/"
+
+locale: "zh-CN"
+defaultContentLanguage: "zh-cn"
+title: "静好"
+
+# 不使用外部主题，版式完全自建
+# theme: ""
+
+enableRobotsTXT: true
+# 不生成 /tags/ 总览页（标签词页仍然可用，如 /tags/设计/）
+disableKinds: ["taxonomy"]
+
+# -----------------------------------------------------------
+# Tailwind CSS v4 集成（Hugo 官方推荐配置）
+# -----------------------------------------------------------
+build:
+  buildStats:
+    # 关键：把模板里用到的 class 统计到 hugo_stats.json，Tailwind 据此按需生成
+    enable: true
+  cachebusters:
+    - source: 'assets/notwatching/hugo_stats\.json'
+      target: css
+    - source: '(postcss|tailwind)\.config\.js'
+      target: css
+
+module:
+  mounts:
+    # assets 目录的默认挂载必须显式保留
+    - source: assets
+      target: assets
+    # 把根目录的 hugo_stats.json 映射进 assets，供 Tailwind CLI 读取
+    - disableWatch: true
+      source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json
+
+# Hugo 需要执行 node / tailwindcss 才能编译样式，必须放行
+security:
+  exec:
+    allow:
+      - ^(dart-)?sass$
+      - ^go$
+      - ^git$
+      - ^node$
+      - ^postcss$
+      - ^tailwindcss$
+
+markup:
+  goldmark:
+    renderer:
+      # 允许在 Markdown 里写原生 HTML
+      unsafe: true
+  highlight:
+    noClasses: false
+
+params:
+  description: "关于设计、代码与日常的慢速笔记。"
+  author: "静好"
+  tagline: "一个安静的角落"
+  # 页脚起始年份
+  since: 2026
+
+taxonomies:
+  tag: tags

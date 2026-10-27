@@ -1,0 +1,11 @@
+<nav class="bg-[#faf9f7]/90 backdrop-blur-sm border-b border-[#3d4a5c]/8 px-6 md:px-10 lg:px-16 sticky top-0 z-50 transition-all duration-300 ease-in-out">
+  <div class="flex items-center justify-between max-w-6xl mx-auto h-16 md:h-20">
+    <a href="{{ "/" | relURL }}" class="font-light tracking-wide text-[#3d4a5c] text-lg md:text-xl hover:text-[#3d4a5c]/70 transition-all duration-300 ease-in-out">
+      {{ site.Title }}
+    </a>
+    <div class="flex gap-6 md:gap-8 font-sans font-light text-xs md:text-sm">
+      <a href="{{ "/posts/" | relURL }}" class="text-[#3d4a5c]/60 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">文章</a>
+      <a href="{{ "/about/" | relURL }}" class="text-[#3d4a5c]/60 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">关于</a>
+    </div>
+  </div>
+</nav>

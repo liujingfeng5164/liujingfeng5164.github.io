@@ -1,0 +1,16 @@
+{
+  "name": "jinghao-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hugo + Tailwind CSS v4 + Sveltia CMS + GitHub Pages blog",
+  "scripts": {
+    "dev": "hugo server --disableFastRender",
+    "dev:drafts": "hugo server --disableFastRender --buildDrafts --buildFuture",
+    "build": "hugo --gc --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.3"
+  }
+}

@@ -1,0 +1,14 @@
+<footer class="mt-16 md:mt-24 px-6 md:px-10 lg:px-16 py-10 md:py-14 border-t border-[#3d4a5c]/10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <p class="font-sans font-light text-xs text-[#3d4a5c]/50 tracking-wide">
+      © {{ site.Params.since }}–{{ now.Year }} {{ site.Title }} · {{ site.Params.description }}
+    </p>
+    <div class="flex gap-6 font-sans font-light text-xs">
+      {{ with site.Home.OutputFormats.Get "rss" }}
+        <a href="{{ .RelPermalink }}" class="text-[#3d4a5c]/50 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">RSS</a>
+      {{ end }}
+      <a href="{{ "/sitemap.xml" | relURL }}" class="text-[#3d4a5c]/50 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">站点地图</a>
+      <a href="{{ "/admin/" | relURL }}" class="text-[#3d4a5c]/50 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">写作</a>
+    </div>
+  </div>
+</footer>

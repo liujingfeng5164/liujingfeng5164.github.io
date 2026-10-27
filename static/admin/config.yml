@@ -1,0 +1,55 @@
+# ===========================================================
+#  Sveltia CMS 配置（PAT 认证，无需 OAuth 代理 / 无服务端）
+#  必改项：yourname → 你的 GitHub 用户名
+# ===========================================================
+
+backend:
+  name: github
+  # 个人主页站点仓库（与 hugo.yaml 的 baseURL 对应）
+  repo: yourname/yourname.github.io
+  # 若用项目站点，改成 yourname/blog
+  branch: main
+  # PAT 认证：不需要 base_url，也不需要 OAuth 代理
+
+# 后台界面语言
+locale: zh_Hans
+
+# 媒体文件：图片存 static/images，站点路径为 /images
+media_folder: "static/images"
+public_folder: "/images"
+
+site_url: "https://yourname.github.io/"
+display_url: "https://yourname.github.io/"
+
+collections:
+  # ---------- 文章（每篇一个 .md，不建 page bundle）----------
+  - name: "posts"
+    label: "文章"
+    label_singular: "文章"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: ["date", "title"]
+    summary: "{{title}} — {{date}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "日期", name: "date", widget: "datetime" }
+      # draft 默认 false = 新建即发布；想默认存草稿改成 true
+      - { label: "草稿", name: "draft", widget: "boolean", default: false }
+      - { label: "标签", name: "tags", widget: "list", required: false, default: [] }
+      - { label: "摘要", name: "summary", widget: "text", required: false }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  # ---------- 单页（关于等固定页面）----------
+  - name: "pages"
+    label: "单页"
+    files:
+      - name: "about"
+        label: "关于"
+        file: "content/about.md"
+        fields:
+          - { label: "标题", name: "title", widget: "string" }
+          - { label: "固定链接", name: "url", widget: "hidden", default: "/about/" }
+          - { label: "正文", name: "body", widget: "markdown" }
