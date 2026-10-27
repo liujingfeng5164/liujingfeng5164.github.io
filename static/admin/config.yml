@@ -11,9 +11,6 @@ backend:
   branch: main
   # PAT 认证：不需要 base_url，也不需要 OAuth 代理
 
-# 后台界面语言
-locale: zh_Hans
-
 # 媒体文件：图片存 static/images，站点路径为 /images
 media_folder: "static/images"
 public_folder: "/images"
