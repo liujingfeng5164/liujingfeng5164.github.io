@@ -21,7 +21,38 @@
     </div>
     {{ end }}
 
-    <footer class="mt-16 md:mt-20 pt-8 border-t border-[#3d4a5c]/10">
+    {{/* 相邻文章：同栏目按时间倒序排列，上一篇 = 更早，下一篇 = 更晚 */}}
+    {{ $page := . }}
+    {{ $siblings := (where site.RegularPages "Section" $page.Section).ByDate.Reverse }}
+    {{ $idx := -1 }}
+    {{ range $i, $p := $siblings }}
+      {{ if eq $p.RelPermalink $page.RelPermalink }}{{ $idx = $i }}{{ end }}
+    {{ end }}
+    {{ $older := "" }}
+    {{ $newer := "" }}
+    {{ if ge $idx 0 }}
+      {{ if lt $idx (sub (len $siblings) 1) }}{{ $older = index $siblings (add $idx 1) }}{{ end }}
+      {{ if gt $idx 0 }}{{ $newer = index $siblings (sub $idx 1) }}{{ end }}
+    {{ end }}
+
+    {{ if or $older $newer }}
+    <nav class="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5" aria-label="相邻文章">
+      {{ with $older }}
+      <a href="{{ .RelPermalink }}" class="group rounded-2xl border border-[#3d4a5c]/10 px-6 py-5 md:px-7 md:py-6 hover:border-[#3d4a5c]/20 hover:shadow-[0_4px_12px_rgba(61,74,92,0.06)] hover:translate-y-[-1px] transition-all duration-300 ease-in-out">
+        <span class="font-sans font-light text-xs text-[#3d4a5c]/50">← 上一篇</span>
+        <p class="mt-2 font-light tracking-wide text-sm md:text-base leading-relaxed group-hover:text-[#3d4a5c]/70 transition-all duration-300 ease-in-out">{{ .Title }}</p>
+      </a>
+      {{ else }}<span class="hidden md:block"></span>{{ end }}
+      {{ with $newer }}
+      <a href="{{ .RelPermalink }}" class="group rounded-2xl border border-[#3d4a5c]/10 px-6 py-5 md:px-7 md:py-6 md:text-right hover:border-[#3d4a5c]/20 hover:shadow-[0_4px_12px_rgba(61,74,92,0.06)] hover:translate-y-[-1px] transition-all duration-300 ease-in-out">
+        <span class="font-sans font-light text-xs text-[#3d4a5c]/50">下一篇 →</span>
+        <p class="mt-2 font-light tracking-wide text-sm md:text-base leading-relaxed group-hover:text-[#3d4a5c]/70 transition-all duration-300 ease-in-out">{{ .Title }}</p>
+      </a>
+      {{ else }}<span class="hidden md:block"></span>{{ end }}
+    </nav>
+    {{ end }}
+
+    <footer class="mt-12 md:mt-14 pt-8 border-t border-[#3d4a5c]/10">
       <a href="{{ "/posts/" | relURL }}" class="font-sans font-light text-xs md:text-sm text-[#3d4a5c]/60 hover:text-[#3d4a5c] transition-all duration-300 ease-in-out">← 返回列表</a>
     </footer>
   </article>
